@@ -49,6 +49,7 @@ FEATURE_SERVERS = {
     "aerogeofisica": "https://geoportal.cprm.gov.br/server/rest/services/geofisica/aerogeofisica/FeatureServer/0",
     "gravimetria":   "https://geoportal.cprm.gov.br/server/rest/services/geofisica/gravimetria/FeatureServer/0",
 }
+TIMEOUT = httpx.Timeout(30.0, connect=10.0)
 
 SSL_VERIFY = False
 
