@@ -37,17 +37,18 @@ ALLOWED_HOSTS = [
 
 # Mapa de atalhos para os ImageServers geofísicos
 IMAGE_SERVERS = {
-    "ternario":  "https://geoportal.cprm.gov.br/image/rest/services/geofisica_ternario/ImageServer",
-    "1dv":       "https://geoportal.cprm.gov.br/image/rest/services/geofisica_1dv/ImageServer",
+IMAGE_SERVERS = {
+    "ternario":  "https://geoportal.sgb.gov.br/image/rest/services/geofisica_ternario/ImageServer",
+    "1dv":       "https://geoportal.sgb.gov.br/image/rest/services/geofisica_1dv/ImageServer",
     "mag":       "https://geoportal.sgb.gov.br/image/rest/services/geofisica_mag/ImageServer",
-    "kperc":     "https://geoportal.cprm.gov.br/image/rest/services/geofisica_kperc/ImageServer",
-    "uth":       "https://geoportal.cprm.gov.br/image/rest/services/geofisica_uth/ImageServer",
+    "kperc":     "https://geoportal.sgb.gov.br/image/rest/services/geofisica_kperc/ImageServer",
+    "uth":       "https://geoportal.sgb.gov.br/image/rest/services/geofisica_uth/ImageServer",
     "relevo":    "https://geoportal.sgb.gov.br/image/rest/services/relevo_30m/ImageServer",
 }
 
 FEATURE_SERVERS = {
-    "aerogeofisica": "https://geoportal.cprm.gov.br/server/rest/services/geofisica/aerogeofisica/FeatureServer/0",
-    "gravimetria":   "https://geoportal.cprm.gov.br/server/rest/services/geofisica/gravimetria/FeatureServer/0",
+    "aerogeofisica": "https://geoportal.sgb.gov.br/server/rest/services/geofisica/aerogeofisica/FeatureServer/0",
+    "gravimetria":   "https://geoportal.sgb.gov.br/server/rest/services/geofisica/gravimetria/FeatureServer/0",
 }
 TIMEOUT = httpx.Timeout(30.0, connect=10.0)
 
