@@ -50,7 +50,7 @@ FEATURE_SERVERS = {
     "gravimetria":   "https://geoportal.cprm.gov.br/server/rest/services/geofisica/gravimetria/FeatureServer/0",
 }
 
-TIMEOUT = httpx.Timeout(30.0, connect=10.0)
+SSL_VERIFY = False
 
 
 def is_allowed(url: str) -> bool:
@@ -107,7 +107,7 @@ async def export_image(
     url = f"{base}/exportImage"
     logger.info(f"Proxy image → {url} bbox={bbox} size={width}x{height}")
 
-    async with httpx.AsyncClient(timeout=TIMEOUT, follow_redirects=True) as client:
+    async with httpx.AsyncClient(timeout=TIMEOUT, follow_redirects=True, verify=False) as client:
         try:
             r = await client.get(url, params=params)
             r.raise_for_status()
@@ -147,7 +147,7 @@ async def query_feature(
     url = f"{base}/query"
     logger.info(f"Proxy feature → {url} where={where}")
 
-    async with httpx.AsyncClient(timeout=TIMEOUT, follow_redirects=True) as client:
+    async with httpx.AsyncClient(timeout=TIMEOUT, follow_redirects=True, verify=False) as client:
         try:
             r = await client.get(url, params=params)
             r.raise_for_status()
@@ -166,7 +166,7 @@ async def generic_proxy(url: str = Query(..., description="URL completa do endpo
         raise HTTPException(403, f"Host não permitido. Apenas domínios da CPRM/SGB são aceitos.")
 
     logger.info(f"Generic proxy → {url}")
-    async with httpx.AsyncClient(timeout=TIMEOUT, follow_redirects=True) as client:
+    async with httpx.AsyncClient(timeout=TIMEOUT, follow_redirects=True, verify=False) as client:
         try:
             r = await client.get(url)
             r.raise_for_status()
